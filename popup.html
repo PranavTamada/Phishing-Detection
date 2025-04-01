@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Phishing Link Guardian</title>
+  <style>
+    body {
+      width: 300px;
+      padding: 15px;
+      font-family: Arial, sans-serif;
+    }
+    .status {
+      margin: 10px 0;
+      padding: 10px;
+      border-radius: 5px;
+      background-color: #f8f9fa;
+    }
+    .stats {
+      font-size: 0.9em;
+      color: #666;
+    }
+    .last-update {
+      margin-top: 10px;
+      font-size: 0.8em;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+  <h2>Phishing Link Guardian</h2>
+  <div class="status">
+    <div id="statusText">Checking status...</div>
+    <div class="stats">
+      <div id="domainCount">Domains in database: Loading...</div>
+      <div class="last-update" id="lastUpdate">Last update: Loading...</div>
+    </div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>

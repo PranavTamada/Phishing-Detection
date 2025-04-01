@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phishing Site Blocked</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            text-align: center;
+        }
+
+        .warning-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            color: #ff4444;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .button:hover {
+            background-color: #45a049;
+        }
+
+        .details {
+            background-color: #f8f9fa;
+            padding: 1rem;
+            border-radius: 5px;
+            margin-top: 1.5rem;
+            text-align: left;
+        }
+
+        .details p {
+            margin: 0.5rem 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="warning-icon">⚠️</div>
+        <h1>Phishing Site Blocked</h1>
+        <p>This website has been identified as a potential phishing site and has been blocked to protect your security.</p>
+        
+        <div class="details">
+            <p><strong>What is phishing?</strong></p>
+            <p>Phishing is a type of cyber attack where criminals try to trick you into giving them sensitive information like passwords, credit card numbers, or personal details.</p>
+            
+            <p><strong>What should you do?</strong></p>
+            <p>1. Do not enter any sensitive information on this site</p>
+            <p>2. Close this tab and navigate to a different website</p>
+            <p>3. If you believe this is a false positive, please report it to the extension developers</p>
+        </div>
+
+        <a href="#" class="button" id="goBack">Go Back</a>
+    </div>
+    
+    <!-- External script file instead of inline script -->
+    <script src="blocked.js"></script>
+</body>
+</html> 
