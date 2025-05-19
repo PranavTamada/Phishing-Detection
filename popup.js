@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Get stats from background script
     chrome.runtime.sendMessage({ action: 'getStats' }, (response) => {
         if (chrome.runtime.lastError) {
+            console.error('Error in sendMessage:', chrome.runtime.lastError); // Adding detailed error logging
             document.getElementById('statusText').textContent = 'Error: Could not get status';
             return;
         }

@@ -37,7 +37,9 @@ class SearchBarPhishingDetector {
         // Start observing with proper configuration
         this.observer.observe(document.body, {
             childList: true,
-            subtree: true
+            subtree: true,
+            attributes: false, // Limiting observation scope
+            characterData: false
         });
     }
 
