@@ -160,7 +160,7 @@ class PhishingDetector {
 
                 // Compute heuristic phishing score
                 const score = this.computePhishScore(formattedUrl);
-                if (score >= 0.3) {
+                if (score >= 0.45) {
                     console.log('URL is unsafe: %d', score);
                     return {
                         isPhishing: true,
