@@ -1,294 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Security Alert - Potential Phishing Detected</title>
-  <style>
-    :root {
-      --primary: #ff5a5f;
-      --primary-dark: #e04146;
-      --secondary: #2e3a59;
-      --light: #f8f9fa;
-      --dark: #212529;
-      --success: #28a745;
-      --warning: #ffc107;
-      --danger: #dc3545;
-      --gray: #6c757d;
-      --gray-light: #e9ecef;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: var(--light);
-      color: var(--dark);
-      line-height: 1.6;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 2rem;
-    }
-
-    .container {
-      max-width: 800px;
-      width: 100%;
-      background-color: white;
-      border-radius: 12px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-      overflow: hidden;
-      position: relative;
-      animation: fadeIn 0.5s ease-in-out;
-    }
-
-    .header {
-      background-color: var(--primary);
-      color: white;
-      padding: 2rem;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .header h1 {
-      font-size: 2rem;
-      margin-bottom: 0.5rem;
-      position: relative;
-      z-index: 2;
-    }
-
-    .header p {
-      font-size: 1.1rem;
-      opacity: 0.9;
-      position: relative;
-      z-index: 2;
-    }
-
-    .shield-icon {
-      width: 120px;
-      height: 120px;
-      margin: 0 auto 1.5rem;
-      display: block;
-      position: relative;
-      z-index: 2;
-    }
-
-    .content {
-      padding: 2rem;
-    }
-
-    .alert-box {
-      background-color: var(--gray-light);
-      border-radius: 8px;
-      padding: 1.5rem;
-      margin-bottom: 2rem;
-      border-left: 5px solid var(--primary);
-      animation: pulse 2s infinite;
-    }
-
-    .site-info {
-      margin-bottom: 2rem;
-    }
-
-    .site-url {
-      font-family: monospace;
-      background-color: var(--gray-light);
-      padding: 0.5rem 1rem;
-      border-radius: 4px;
-      display: inline-block;
-      word-break: break-all;
-    }
-
-    .actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      margin-top: 2rem;
-    }
-
-    .btn {
-      padding: 0.75rem 1.5rem;
-      border-radius: 6px;
-      border: none;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      font-size: 1rem;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-width: 150px;
-    }
-
-    .btn-primary {
-      background-color: var(--primary);
-      color: white;
-    }
-
-    .btn-primary:hover {
-      background-color: var(--primary-dark);
-      transform: translateY(-2px);
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-
-    .btn-secondary {
-      background-color: var(--gray-light);
-      color: var(--dark);
-    }
-
-    .btn-secondary:hover {
-      background-color: var(--gray);
-      color: white;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-
-    .btn-success {
-      background-color: var(--success);
-      color: white;
-    }
-
-    .btn-success:hover {
-      background-color: #218838;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-
-    .btn-icon {
-      margin-right: 0.5rem;
-      width: 20px;
-      height: 20px;
-    }
-
-    .reasons {
-      margin: 2rem 0;
-    }
-
-    .reason-item {
-      display: flex;
-      align-items: flex-start;
-      margin-bottom: 1rem;
-      padding: 1rem;
-      background-color: var(--gray-light);
-      border-radius: 8px;
-      transition: transform 0.2s ease;
-    }
-
-    .reason-item:hover {
-      transform: translateX(5px);
-    }
-
-    .reason-icon {
-      margin-right: 1rem;
-      min-width: 24px;
-    }
-
-    .footer {
-      text-align: center;
-      padding: 1.5rem;
-      background-color: var(--gray-light);
-      color: var(--gray);
-      font-size: 0.9rem;
-    }
-
-    .extension-logo {
-      height: 30px;
-      margin-bottom: 0.5rem;
-    }
-
-    .waves {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 50px;
-      z-index: 1;
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes pulse {
-      0% {
-        box-shadow: 0 0 0 0 rgba(255, 90, 95, 0.4);
-      }
-      70% {
-        box-shadow: 0 0 0 10px rgba(255, 90, 95, 0);
-      }
-      100% {
-        box-shadow: 0 0 0 0 rgba(255, 90, 95, 0);
-      }
-    }
-
-    @media (max-width: 768px) {
-      .container {
-        margin: 1rem;
-      }
-      
-      .actions {
-        flex-direction: column;
-      }
-      
-      .btn {
-        width: 100%;
-      }
-    }
-
-    .warning-animation {
-      animation: warningPulse 2s infinite;
-    }
-
-    @keyframes warningPulse {
-      0% {
-        transform: scale(1);
-      }
-      50% {
-        transform: scale(1.05);
-      }
-      100% {
-        transform: scale(1);
-      }
-    }
-
-    .progress-bar {
-      height: 6px;
-      background-color: var(--gray-light);
-      border-radius: 3px;
-      overflow: hidden;
-      margin: 2rem 0;
-    }
-
-    .progress-value {
-      height: 100%;
-      width: 85%;
-      background-color: var(--danger);
-      animation: progressAnimation 1.5s ease-in-out;
-    }
-
-    @keyframes progressAnimation {
-      0% {
-        width: 0;
-      }
-      100% {
-        width: 85%;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <div class="container">
@@ -304,89 +20,113 @@
         <path fill="white" fill-opacity="1" d="M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,202.7C672,203,768,181,864,181.3C960,181,1056,203,1152,208C1248,213,1344,203,1392,197.3L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
       </svg>
     </div>
-    
+
     <div class="content">
       <div class="alert-box">
         <h2>We've blocked access to this website</h2>
         <p>Our security system has identified this site as potentially dangerous. It may be attempting to steal your personal information.</p>
       </div>
-      
+
       <div class="site-info">
         <h3>Blocked Website:</h3>
-        <div class="site-url" id="blocked-url">https://suspicious-website.example.com</div>
+        <div class="site-url" id="blocked-url"></div>
       </div>
-      
-      <div class="progress-bar">
-        <div class="progress-value"></div>
+
+      <h3>Phishing Score:</h3>
+      <div class="progress-bar" aria-label="Phishing score progress bar">
+        <div class="progress-value" id="phishing-score-bar"></div>
       </div>
-      
+      <div id="phishing-score-text" style="font-weight: 600; color: var(--danger); margin-bottom: 1.5rem;"></div>
+
       <h3>Why was this site blocked?</h3>
-      <div class="reasons">
-        <div class="reason-item">
-          <svg class="reason-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+      <div class="reasons" id="reasons-container">
+        <!-- Dynamic flagged reasons will be inserted here -->
+      </div>
+
+      <div class="about-phishing" id="about-phishing">
+        <div class="about-header" tabindex="0" role="button" aria-expanded="false" aria-controls="about-content">
+          About Phishing
+          <svg class="toggle-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
           </svg>
-          <div>
-            <strong>Suspicious URL Structure</strong>
-            <p>The website URL contains characteristics commonly associated with phishing attempts.</p>
-          </div>
         </div>
-        
-        <div class="reason-item">
-          <svg class="reason-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10"></circle>
-            <line x1="12" y1="8" x2="12" y2="12"></line>
-            <line x1="12" y1="16" x2="12.01" y2="16"></line>
-          </svg>
-          <div>
-            <strong>Recently Registered Domain</strong>
-            <p>This domain was registered very recently, which is a common trait of phishing websites.</p>
-          </div>
-        </div>
-        
-        <div class="reason-item">
-          <svg class="reason-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
-            <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
-            <line x1="6" y1="1" x2="6" y2="4"></line>
-            <line x1="10" y1="1" x2="10" y2="4"></line>
-            <line x1="14" y1="1" x2="14" y2="4"></line>
-          </svg>
-          <div>
-            <strong>Impersonation Detected</strong>
-            <p>This site appears to be impersonating a legitimate website to steal your information.</p>
-          </div>
+        <div class="about-content" id="about-content" role="region" aria-hidden="true">
+          <p><strong>What is Phishing?</strong> Phishing is a cyber attack where attackers impersonate legitimate organizations to steal sensitive information such as passwords, credit card numbers, or personal data.</p>
+          <p><strong>Common Harms:</strong> Credential theft, financial loss, identity theft, malware infection, and unauthorized access to your accounts.</p>
+          <p><strong>Tips to Recognize Phishing Links:</strong></p>
+          <ul>
+            <li>Check for misspellings or strange characters in the URL.</li>
+            <li>Look for suspicious subdomains or IP addresses instead of domain names.</li>
+            <li>Be cautious of urgent or threatening language in emails or websites.</li>
+            <li>Verify the website's security certificate (look for HTTPS and a padlock icon).</li>
+            <li>Do not click on links from unknown or unexpected sources.</li>
+          </ul>
         </div>
       </div>
-      
+
+      <button id="quiz-toggle-btn" aria-expanded="false" aria-controls="quiz-section" aria-label="Toggle phishing awareness quiz">
+        🎯 Take a quick quiz to test your awareness!
+      </button>
+
+      <section id="quiz-section" aria-hidden="true">
+        <h3>Phishing Awareness Quiz</h3>
+        <form id="quiz-form">
+          <div class="quiz-question" data-question="1">
+            <p>1. Which of the following is a common sign of a phishing link?</p>
+            <div class="quiz-options">
+              <label><input type="radio" name="q1" value="a" /> A URL with a padlock icon</label>
+              <label><input type="radio" name="q1" value="b" /> Misspelled domain names</label>
+              <label><input type="radio" name="q1" value="c" /> HTTPS in the URL</label>
+              <label><input type="radio" name="q1" value="d" /> A familiar company logo</label>
+            </div>
+          </div>
+
+          <div class="quiz-question" data-question="2">
+            <p>2. What should you do if you accidentally click a phishing link?</p>
+            <div class="quiz-options">
+              <label><input type="radio" name="q2" value="a" /> Ignore it and continue browsing</label>
+              <label><input type="radio" name="q2" value="b" /> Change your passwords and monitor your accounts</label>
+              <label><input type="radio" name="q2" value="c" /> Share the link with friends</label>
+            </div>
+          </div>
+
+          <div class="quiz-question" data-question="3">
+            <p>3. Which of these is NOT a common trait of phishing URLs?</p>
+            <div class="quiz-options">
+              <label><input type="radio" name="q3" value="a" /> Use of IP addresses instead of domain names</label>
+              <label><input type="radio" name="q3" value="b" /> Multiple suspicious subdomains</label>
+              <label><input type="radio" name="q3" value="c" /> Official company domain name</label>
+              <label><input type="radio" name="q3" value="d" /> Excessive special characters</label>
+            </div>
+          </div>
+
+          <button type="submit" id="quiz-submit">Submit Quiz</button>
+        </form>
+
+        <div id="quiz-result" aria-live="polite"></div>
+        <div id="quiz-feedback"></div>
+        <div id="quiz-encouragement"></div>
+      </section>
+
       <div class="actions">
-        <button class="btn btn-primary" id="go-back">
+        <button class="btn btn-primary" id="go-back" aria-label="Go back to safety">
           <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <line x1="19" y1="12" x2="5" y2="12"></line>
             <polyline points="12 19 5 12 12 5"></polyline>
           </svg>
           Go Back to Safety
         </button>
-        
-        <button class="btn btn-secondary" id="report-false">
+
+        <button class="btn btn-secondary" id="report-false" aria-label="Report false positive and continue">
           <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
             <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
           </svg>
-          Report False Positive
-        </button>
-        
-        <button class="btn btn-success" id="learn-more">
-          <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10"></circle>
-            <line x1="12" y1="16" x2="12" y2="12"></line>
-            <line x1="12" y1="8" x2="12.01" y2="8"></line>
-          </svg>
-          Learn About Phishing
+          Report False Positive and Continue to Site
         </button>
       </div>
     </div>
-    
+
     <div class="footer">
       <svg class="extension-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
@@ -398,30 +138,6 @@
     </div>
   </div>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      // Display the actual blocked URL
-      const blockedUrl = document.getElementById('blocked-url');
-      const currentUrl = new URL(window.location.href).searchParams.get('url') || 'https://suspicious-website.example.com';
-      blockedUrl.textContent = currentUrl;
-      
-      // Go back button functionality
-      document.getElementById('go-back').addEventListener('click', function() {
-        window.history.back();
-      });
-      
-      // Report false positive
-      document.getElementById('report-false').addEventListener('click', function() {
-        // This would normally send a message to your extension's background script
-        alert('Thank you for your feedback. Our team will review this website.');
-      });
-      
-      // Learn more about phishing
-      document.getElementById('learn-more').addEventListener('click', function() {
-        // Open a new tab with educational content about phishing
-        window.open('https://www.phishguard-example.com/learn', '_blank');
-      });
-    });
-  </script>
+  <script src="blocked.js"></script>
 </body>
 </html>

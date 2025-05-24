@@ -154,18 +154,29 @@ class PhishingDetector {
                         isPhishing: true,
                         confidence: "High",
                         reason: `Matched phishing domain: ${domain}`,
+                        score: 1, // 100% phishing
+                        features: ["impersonation"], // Example feature, adjust as needed
                         timestamp: Date.now()
                     };
                 }
 
                 // Compute heuristic phishing score
                 const score = this.computePhishScore(formattedUrl);
+                // Example: extract features (customize as needed)
+                const features = [];
                 if (score >= 0.45) {
+                    // Example feature extraction (customize logic as needed)
+                    if (formattedUrl.match(/\d{1,3}(\.\d{1,3}){3}/)) features.push("ipInUrl");
+                    if ((new URL(formattedUrl)).hostname.split('.').length - 2 > 2) features.push("suspiciousSubdomain");
+                    if (formattedUrl.match(/[-@?%=&\\/]/g)) features.push("specialChars");
+                    // Add more feature extraction as needed
                     console.log('URL is unsafe: %d', score);
                     return {
                         isPhishing: true,
                         confidence: "Medium",
                         reason: `Heuristic phishing score: ${score.toFixed(2)}`,
+                        score,
+                        features,
                         timestamp: Date.now()
                     };
                 }
@@ -218,8 +229,12 @@ chrome.webNavigation.onBeforeNavigate.addListener(async (details) => {
     if (details.frameId === 0) { // Only check main frame
         const result = await phishingDetector.checkURL(details.url);
         if (result.isPhishing) {
+            const urlParam = encodeURIComponent(details.url);
+            const score = result.score !== undefined ? result.score : 0;
+            const features = result.features && result.features.length > 0 ? encodeURIComponent(result.features.join(',')) : '';
+            const query = `?url=${urlParam}&score=${score}${features ? `&features=${features}` : ''}`;
             chrome.tabs.update(details.tabId, {
-                url: chrome.runtime.getURL('blocked.html')
+                url: chrome.runtime.getURL('blocked.html') + query
             });
         }
     }

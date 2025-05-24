@@ -1,0 +1,403 @@
+
+    :root {
+      --primary: #ff5a5f;
+      --primary-dark: #e04146;
+      --secondary: #2e3a59;
+      --light: #f8f9fa;
+      --dark: #212529;
+      --success: #28a745;
+      --warning: #ffc107;
+      --danger: #dc3545;
+      --gray: #6c757d;
+      --gray-light: #e9ecef;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--light);
+      color: var(--dark);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .container {
+      max-width: 800px;
+      width: 100%;
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      position: relative;
+      animation: fadeIn 0.5s ease-in-out;
+    }
+
+    .header {
+      background-color: var(--primary);
+      color: white;
+      padding: 2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header h1 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .header p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      position: relative;
+      z-index: 2;
+    }
+
+    .shield-icon {
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 1.5rem;
+      display: block;
+      position: relative;
+      z-index: 2;
+    }
+
+    .content {
+      padding: 2rem;
+    }
+
+    .alert-box {
+      background-color: var(--gray-light);
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      border-left: 5px solid var(--primary);
+      animation: pulse 2s infinite;
+    }
+
+    .site-info {
+      margin-bottom: 1rem;
+    }
+
+    .site-url {
+      font-family: monospace;
+      background-color: var(--gray-light);
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      display: inline-block;
+      word-break: break-all;
+    }
+
+    .progress-bar {
+      height: 12px;
+      background-color: var(--gray-light);
+      border-radius: 6px;
+      overflow: hidden;
+      margin: 1rem 0 2rem 0;
+      box-shadow: inset 0 1px 3px rgba(0,0,0,.2);
+    }
+
+    .progress-value {
+      height: 100%;
+      width: 0;
+      background-color: var(--danger);
+      transition: width 1.5s ease-in-out;
+    }
+
+    h3 {
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+      color: var(--secondary);
+    }
+
+    .reasons {
+      margin: 1rem 0 2rem 0;
+    }
+
+    .reason-item {
+      background-color: var(--gray-light);
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      padding: 1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      user-select: none;
+      transition: background-color 0.3s ease;
+    }
+
+    .reason-item:hover {
+      background-color: #dbe4f7;
+    }
+
+    .reason-icon {
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
+      margin-top: 4px;
+      stroke: var(--danger);
+    }
+
+    .reason-content {
+      flex-grow: 1;
+    }
+
+    .reason-title {
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-bottom: 0.25rem;
+      color: var(--danger);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .toggle-icon {
+      width: 18px;
+      height: 18px;
+      stroke: var(--danger);
+      transition: transform 0.3s ease;
+    }
+
+    .reason-description {
+      margin-top: 0.5rem;
+      color: var(--dark);
+      display: none;
+      font-size: 0.95rem;
+      line-height: 1.4;
+    }
+
+    .reason-item.expanded .reason-description {
+      display: block;
+    }
+
+    .reason-item.expanded .toggle-icon {
+      transform: rotate(90deg);
+    }
+
+    .about-phishing {
+      background-color: var(--gray-light);
+      border-radius: 12px;
+      padding: 1rem 1.5rem;
+      margin-top: 2rem;
+      user-select: none;
+    }
+
+    .about-header {
+      font-weight: 700;
+      font-size: 1.3rem;
+      color: var(--primary);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.5rem 0;
+    }
+
+    .about-content {
+      margin-top: 1rem;
+      display: none;
+      color: var(--dark);
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+
+    .about-phishing.expanded .about-content {
+      display: block;
+    }
+
+    .about-phishing.expanded .about-header svg {
+      transform: rotate(90deg);
+    }
+
+    .about-header svg {
+      width: 20px;
+      height: 20px;
+      stroke: var(--primary);
+      transition: transform 0.3s ease;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border-radius: 6px;
+      border: none;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-size: 1rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 150px;
+    }
+
+    .btn-primary {
+      background-color: var(--primary);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background-color: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-secondary {
+      background-color: var(--gray-light);
+      color: var(--dark);
+    }
+
+    .btn-secondary:hover {
+      background-color: var(--gray);
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-success {
+      background-color: var(--success);
+      color: white;
+    }
+
+    .btn-success:hover {
+      background-color: #218838;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-icon {
+      margin-right: 0.5rem;
+      width: 20px;
+      height: 20px;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 1.5rem;
+      background-color: var(--gray-light);
+      color: var(--gray);
+      font-size: 0.9rem;
+    }
+
+    .extension-logo {
+      height: 30px;
+      margin-bottom: 0.5rem;
+    }
+
+    .waves {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 50px;
+      z-index: 1;
+    }
+
+    /* Quiz styles */
+    #quiz-section {
+      background-color: var(--gray-light);
+      border-radius: 12px;
+      padding: 1.5rem 2rem;
+      margin-top: 2rem;
+      display: none;
+      user-select: none;
+    }
+
+    #quiz-section h3 {
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+
+    .quiz-question {
+      margin-bottom: 1.5rem;
+    }
+
+    .quiz-question p {
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .quiz-options label {
+      display: block;
+      margin-bottom: 0.4rem;
+      cursor: pointer;
+    }
+
+    .quiz-options input[type="radio"] {
+      margin-right: 0.5rem;
+    }
+
+    #quiz-submit {
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      padding: 0.6rem 1.2rem;
+      border-radius: 6px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+
+    #quiz-submit:hover {
+      background-color: var(--primary-dark);
+    }
+
+    #quiz-result {
+      margin-top: 1rem;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--secondary);
+    }
+
+    #quiz-feedback {
+      margin-top: 1rem;
+      font-size: 1rem;
+      line-height: 1.4;
+      color: var(--dark);
+    }
+
+    #quiz-encouragement {
+      margin-top: 1.5rem;
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: var(--success);
+    }
+
+    /* Quiz toggle button */
+    #quiz-toggle-btn {
+      margin-top: 1rem;
+      background: none;
+      border: none;
+      color: var(--primary);
+      font-size: 1rem;
+      cursor: pointer;
+      user-select: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0;
+    }
+
+    #quiz-toggle-btn:hover {
+      text-decoration: underline;
+    }
